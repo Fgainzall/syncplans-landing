@@ -12,16 +12,16 @@
     :root {
       --blue: #2563eb;
       --blue-dark: #1d4ed8;
-      --blue-light: #dbeafe;
-      --bg: #f3f4f6;
-      --text: #0f172a;
-      --text-soft: #4b5563;
-      --card: #ffffff;
-      --border: #e5e7eb;
+      --bg: #020617;
+      --bg-card: #020617;
+      --bg-soft: #0b1220;
+      --text: #e5e7eb;
+      --text-soft: #9ca3af;
+      --border: #1f2937;
       --yellow: #facc15;
       --red: #f97373;
       --cyan: #38bdf8;
-      --shadow-soft: 0 20px 40px rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.6);
     }
 
     * {
@@ -33,9 +33,10 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, sans-serif;
-      background: radial-gradient(circle at top left, #e0f2fe 0, #f9fafb 40%, #f3f4f6 100%);
+      background: radial-gradient(circle at top left, #1d4ed8 0, #020617 40%, #000 100%);
       color: var(--text);
       line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -46,14 +47,28 @@
     .page {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 32px 16px 64px;
+      padding: 20px 16px 64px;
     }
 
-    header {
+    /* NAV */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.75), transparent);
+      margin-bottom: 16px;
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 4px 6px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
+      gap: 16px;
     }
 
     .logo {
@@ -61,19 +76,21 @@
       align-items: center;
       gap: 10px;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 18px;
+      letter-spacing: -0.04em;
     }
 
     .logo-icon {
       width: 32px;
       height: 32px;
       border-radius: 12px;
-      border: 2px solid var(--blue);
+      border: 1px solid rgba(191, 219, 254, 0.6);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       padding: 4px;
-      background: #ffffff;
+      background: radial-gradient(circle at top left, #1d4ed8, #020617);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.8);
     }
 
     .logo-bars {
@@ -91,14 +108,36 @@
     .logo-bar.red { background: var(--red); }
     .logo-bar.cyan { background: var(--cyan); }
 
-    .header-cta a {
-      font-size: 14px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--blue);
-      color: var(--blue);
-      font-weight: 500;
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-soft);
     }
+
+    .nav-links a {
+      padding: 4px 8px;
+      border-radius: 999px;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+    }
+
+    .nav-cta a {
+      font-size: 13px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(96, 165, 250, 0.7);
+      color: #bfdbfe;
+      font-weight: 500;
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.8);
+    }
+
+    /* HERO */
 
     main {
       display: flex;
@@ -106,104 +145,148 @@
       gap: 56px;
     }
 
-    /* Hero */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
       gap: 32px;
       align-items: center;
+      margin-top: 8px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.5), rgba(15, 23, 42, 0.9));
+      color: #dbeafe;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      margin-bottom: 10px;
+    }
+
+    .hero-kicker span.tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.3);
     }
 
     .hero-title {
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
+      letter-spacing: -0.045em;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(to right, #bae6fd, #f9a8d4);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     .hero-subtitle {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--text-soft);
-      margin-bottom: 24px;
+      margin-bottom: 18px;
+      max-width: 480px;
     }
 
-    .hero-badges {
+    .hero-metrics {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      color: #cbd5f5;
     }
 
-    .badge {
-      font-size: 12px;
+    .hero-metrics span {
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--blue-dark);
-      font-weight: 500;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(55, 65, 81, 0.9);
     }
 
     .hero-ctas {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 12px;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
     .btn-primary {
-      background: var(--blue);
-      color: #ffffff;
-      padding: 10px 18px;
+      background: linear-gradient(to right, #2563eb, #38bdf8);
+      color: #f9fafb;
+      padding: 9px 18px;
       border-radius: 999px;
       font-size: 14px;
       font-weight: 600;
       border: none;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
 
     .btn-primary:hover {
-      background: var(--blue-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.7);
     }
 
     .btn-secondary {
-      background: transparent;
-      color: var(--blue);
+      background: rgba(15, 23, 42, 0.8);
+      color: #bfdbfe;
       border-radius: 999px;
-      border: 1px solid rgba(37, 99, 235, 0.3);
-      padding: 10px 18px;
-      font-size: 14px;
+      border: 1px solid rgba(55, 65, 81, 0.85);
+      padding: 9px 16px;
+      font-size: 13px;
       font-weight: 500;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .hero-microcopy {
-      font-size: 13px;
-      color: var(--text-soft);
+    .hero-footnote {
+      font-size: 11px;
+      color: #6b7280;
     }
 
     .hero-visual {
-      background: rgba(255, 255, 255, 0.9);
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.5), rgba(15, 23, 42, 1));
       border-radius: 24px;
       padding: 16px 16px 20px;
       box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      border: 1px solid rgba(30, 64, 175, 0.8);
     }
 
     .hero-visual-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 12px;
-      color: var(--text-soft);
+      color: #cbd5f5;
+    }
+
+    .hero-visual-header span.badge-lite {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 10px;
     }
 
     .hero-calendar {
       border-radius: 18px;
-      background: #f9fafb;
+      background: rgba(15, 23, 42, 0.98);
       padding: 12px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(55, 65, 81, 0.9);
     }
 
     .hero-calendar-header {
@@ -213,6 +296,12 @@
       margin-bottom: 8px;
       font-size: 13px;
       font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .hero-calendar-header span.sub {
+      font-size: 11px;
+      color: #9ca3af;
     }
 
     .hero-days {
@@ -220,8 +309,8 @@
       grid-template-columns: repeat(7, 1fr);
       gap: 4px;
       font-size: 11px;
-      color: #9ca3af;
-      margin-bottom: 6px;
+      color: #6b7280;
+      margin-bottom: 4px;
     }
 
     .hero-grid {
@@ -231,11 +320,11 @@
     }
 
     .hero-day {
-      background: #ffffff;
+      background: rgba(15, 23, 42, 0.96);
       border-radius: 10px;
       padding: 4px 4px 6px;
       min-height: 44px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(31, 41, 55, 0.9);
       font-size: 11px;
       display: flex;
       flex-direction: column;
@@ -244,7 +333,7 @@
 
     .hero-day-num {
       font-weight: 600;
-      color: #6b7280;
+      color: #9ca3af;
     }
 
     .hero-dot-row {
@@ -264,9 +353,9 @@
       justify-content: flex-start;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 8px;
       font-size: 11px;
-      color: #6b7280;
+      color: #9ca3af;
     }
 
     .hero-legend-item {
@@ -281,9 +370,11 @@
       border-radius: 999px;
     }
 
+    /* SECCIONES GENERALES */
+
     section {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
       gap: 28px;
       align-items: flex-start;
     }
@@ -292,114 +383,103 @@
       grid-template-columns: minmax(0, 1fr);
     }
 
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-subtitle {
-      font-size: 15px;
-      color: var(--text-soft);
-      margin-bottom: 16px;
-    }
-
-    .section-body {
-      font-size: 14px;
-      color: var(--text-soft);
-    }
-
-    .pill {
+    .section-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 11px;
-      padding: 4px 8px;
+      padding: 4px 9px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.04);
-      color: #6b7280;
+      background: rgba(15, 23, 42, 0.9);
+      color: #9ca3af;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
       margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .section-body {
+      font-size: 13px;
+      color: var(--text-soft);
     }
 
     .card {
-      background: var(--card);
+      background: radial-gradient(circle at top left, #020617, #020617 30%, #020617 100%);
       border-radius: 18px;
-      padding: 16px 18px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.06);
+      padding: 14px 16px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
       font-size: 13px;
       color: var(--text-soft);
     }
 
     .card + .card {
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     .card-title {
       font-weight: 600;
       margin-bottom: 6px;
-      color: var(--text);
+      color: #e5e7eb;
       font-size: 14px;
     }
 
     .bullet-list {
-      margin-top: 6px;
-      padding-left: 16px;
+      margin-top: 4px;
+      padding-left: 18px;
     }
 
     .bullet-list li {
       margin-bottom: 4px;
     }
 
-    .tag {
+    .tag-inline {
       display: inline-flex;
       align-items: center;
-      border-radius: 999px;
+      gap: 6px;
       font-size: 11px;
-      padding: 4px 10px;
-      font-weight: 500;
-    }
-
-    .tag-yellow {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    .tag-red {
-      background: #fee2e2;
-      color: #7f1d1d;
-    }
-
-    .tag-blue {
-      background: #e0f2fe;
-      color: #0e7490;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: #9ca3af;
     }
 
     .final-cta {
       text-align: center;
-      padding: 32px 20px 0;
+      padding: 32px 16px 0;
     }
 
     .final-cta h2 {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      letter-spacing: -0.03em;
     }
 
     .final-cta p {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-soft);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     footer {
-      margin-top: 40px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 12px;
-      color: #9ca3af;
+      margin-top: 36px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(31, 41, 55, 0.95);
+      font-size: 11px;
+      color: #6b7280;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -412,8 +492,10 @@
     }
 
     footer a {
-      color: #9ca3af;
+      color: #6b7280;
     }
+
+    /* RESPONSIVE */
 
     @media (max-width: 900px) {
       .hero,
@@ -423,23 +505,40 @@
 
       .hero-visual {
         order: -1;
+        margin-bottom: 8px;
+      }
+
+      .nav-inner {
+        gap: 8px;
+      }
+
+      .nav-links {
+        display: none;
       }
     }
 
     @media (max-width: 600px) {
       .hero-title {
-        font-size: 28px;
+        font-size: 26px;
       }
 
       .page {
         padding-inline: 14px;
       }
+
+      .hero-subtitle {
+        font-size: 14px;
+      }
+
+      .card {
+        padding: 12px 12px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
+  <div class="nav">
+    <div class="nav-inner">
       <div class="logo">
         <div class="logo-icon">
           <div class="logo-bars">
@@ -450,46 +549,66 @@
         </div>
         <span>SyncPlans</span>
       </div>
-      <div class="header-cta">
-        <a href="#contacto">Hablar con el fundador</a>
+      <div class="nav-links">
+        <a href="#problema">Problema</a>
+        <a href="#solucion">Solución</a>
+        <a href="#modelo">Modelo</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#equipo">Equipo</a>
       </div>
-    </header>
+      <div class="nav-cta">
+        <a href="#equipo">Hablar con el fundador</a>
+      </div>
+    </div>
+  </div>
 
+  <div class="page">
     <main>
       <!-- HERO -->
       <section class="hero">
         <div>
-          <div class="hero-badges">
-            <span class="badge">Life coordination app</span>
-            <span class="badge">Parejas y familias</span>
+          <div class="hero-kicker">
+            <span>Life coordination app</span>
+            <span class="tag">Parejas • Familias</span>
           </div>
           <h1 class="hero-title">
-            La forma moderna de organizar la vida en pareja y familia.
+            El calendario que entiende <span class="highlight">relaciones</span>, no solo horarios.
           </h1>
           <p class="hero-subtitle">
-            SyncPlans es la primera app que detecta automáticamente si dos eventos
-            se cruzan en el tiempo, clasifica tus planes por tipo (personal, pareja, familia)
-            y sincroniza agendas en tiempo real.
+            SyncPlans es la primera app pensada para personas, parejas y familias que quieren evitar
+            choques de planes, dobles compromisos y discusiones por “a qué dijimos que íbamos primero”.
           </p>
-          <div class="hero-ctas">
-            <button class="btn-primary">Solicitar demo privada</button>
-            <button class="btn-secondary">Descargar investor one-pager</button>
+
+          <div class="hero-metrics">
+            <span>Mercado inicial: parejas urbanas 20–40 años</span>
+            <span>Use case: agenda compartida y sin conflictos</span>
           </div>
-          <div class="hero-microcopy">
-            Diseñado para reducir conflictos cotidianos y mejorar la claridad en las relaciones.
+
+          <div class="hero-ctas">
+            <button class="btn-primary">
+              Solicitar demo privada
+              <span>→</span>
+            </button>
+            <button class="btn-secondary">
+              Descargar investor one-pager
+            </button>
+          </div>
+
+          <div class="hero-footnote">
+            Diseñado para integrarse a la rutina diaria sin cambiar los hábitos de chat y calendario existentes.
           </div>
         </div>
 
-        <!-- Visual de producto -->
+        <!-- VISUAL -->
         <div class="hero-visual">
           <div class="hero-visual-header">
-            <span>Vista de calendario – SyncPlans</span>
-            <span style="font-size:11px; color:#9ca3af;">Ejemplo de marzo</span>
+            <span>SyncPlans – Vista mensual</span>
+            <span class="badge-lite">Ejemplo de pareja + familia</span>
           </div>
           <div class="hero-calendar">
             <div class="hero-calendar-header">
               <span>Marzo 2025</span>
-              <span style="font-size:12px; color:#6b7280;">Tú · Pareja · Familia</span>
+              <span class="sub">Tú · Pareja · Familia</span>
             </div>
             <div class="hero-days">
               <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
@@ -574,183 +693,186 @@
       </section>
 
       <!-- PROBLEMA -->
-      <section>
+      <section id="problema">
         <div>
-          <div class="pill">Problema</div>
+          <div class="section-pill">Problema</div>
           <h2 class="section-title">La organización de la vida compartida sigue en el siglo pasado.</h2>
           <p class="section-subtitle">
-            Las personas reciben invitaciones y planes por múltiples canales, pero siguen dependiendo de
-            calendarios genéricos que no entienden la dinámica de pareja y familia.
+            Las parejas y familias organizan su vida entre mensajes de WhatsApp, calendarios genéricos y memoria.
+            El resultado: choques de planes, culpas y fricciones evitables.
           </p>
           <div class="section-body">
             <ul class="bullet-list">
-              <li>Doble-agendamientos frecuentes.</li>
-              <li>Olvidos y confusiones sobre “qué aceptamos primero”.</li>
-              <li>Planes mezclados entre trabajo, amigos, pareja y familia.</li>
-              <li>Estrés y fricciones emocionales por la agenda, no por el evento en sí.</li>
+              <li>Doble-agendamientos frecuentes para el mismo día y hora.</li>
+              <li>Olvidos sobre a quién se le dijo que “sí” primero.</li>
+              <li>Planes personales, de pareja y de familia mezclados sin contexto.</li>
+              <li>Discusiones que no son por el plan, sino por la sensación de desorden y poca prioridad.</li>
             </ul>
-            <p style="margin-top:10px;">
-              <strong>Insight:</strong> Las personas no pelean por el plan, pelean por la sensación de no haber
-              sido prioridad o de que “no hubo orden”.
-            </p>
           </div>
         </div>
         <div>
           <div class="card">
             <div class="card-title">Contexto</div>
             <p>
-              Más de 5.78 mil millones de personas usan smartphones y organizan su día a día desde el móvil.
-              Aun así, ninguna app relevante se ha enfocado en resolver el problema de coordinación emocional
-              entre personas que comparten su vida.
+              El smartphone es el centro de la vida social y logística, pero las herramientas actuales
+              (calendario clásico, chats, notas) no entienden la lógica emocional de una relación:
+              quién comparte qué plan, qué tipo de evento es y qué se está priorizando.
             </p>
           </div>
           <div class="card">
-            <div class="card-title">Dolor concreto</div>
+            <div class="card-title">Insight de usuario</div>
+            <p>
+              Las personas no quieren “otro calendario más”.
+              Quieren una forma simple y visual de saber:
+            </p>
             <ul class="bullet-list">
-              <li>“Acepté otra cosa sin acordarme que ya teníamos algo.”</li>
-              <li>“No sé a quién le dije que sí primero.”</li>
-              <li>“Nuestro calendario es una mezcla inentendible de todo.”</li>
+              <li>Qué ya está comprometido en pareja o familia.</li>
+              <li>Qué se puede mover y qué no.</li>
+              <li>Qué acordaron primero para evitar malentendidos.</li>
             </ul>
           </div>
         </div>
       </section>
 
       <!-- SOLUCIÓN -->
-      <section>
+      <section id="solucion">
         <div>
-          <div class="pill">Solución</div>
+          <div class="section-pill">Solución</div>
           <h2 class="section-title">SyncPlans: un calendario diseñado para relaciones, no solo para horarios.</h2>
           <p class="section-subtitle">
-            SyncPlans entiende que organizar la vida compartida es un problema humano, no solo logístico.
+            SyncPlans clasifica los planes por tipo, sincroniza agendas entre miembros y avisa cuando
+            un nuevo evento entra en conflicto con algo ya aceptado.
           </p>
           <div class="section-body">
             <ul class="bullet-list">
-              <li>Clasificación clara por tipo de evento: personal, pareja, familia.</li>
-              <li>Detección inmediata de choques de horario entre eventos.</li>
-              <li>Sincronización entre miembros: todos ven lo mismo, sin confusiones.</li>
-              <li>Interfaz pensada para reducir fricción y mejorar la comunicación.</li>
+              <li>Eventos clasificados en <strong>personal, pareja y familia</strong> con color propio.</li>
+              <li>Motor de detección de conflictos de horario según participantes.</li>
+              <li>Sincronización entre miembros del grupo: todos ven la misma realidad.</li>
+              <li>Registro de decisiones ante conflictos (qué se priorizó y cuándo).</li>
             </ul>
           </div>
         </div>
         <div>
           <div class="card">
-            <div class="card-title">Eventos por tipo</div>
-            <p>
-              Cada evento se etiqueta por tipo y se colorea en el calendario:
-            </p>
-            <div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:6px;">
-              <span class="tag tag-yellow">🟡 Personal</span>
-              <span class="tag tag-red">🔴 Pareja</span>
-              <span class="tag tag-blue">🔵 Familia</span>
-            </div>
-            <p style="margin-top:8px;">
-              De un vistazo, el usuario entiende cómo se distribuye su tiempo.
-            </p>
+            <div class="card-title">Capas de uso</div>
+            <ul class="bullet-list">
+              <li><strong>Modo individual:</strong> una vista limpia para eventos personales.</li>
+              <li><strong>Modo pareja:</strong> ambos ven los compromisos compartidos y personales relevantes.</li>
+              <li><strong>Modo familia:</strong> padres, hijos y otros miembros clave en una sola vista.</li>
+            </ul>
           </div>
           <div class="card">
             <div class="card-title">Detección de conflicto</div>
             <p>
-              Antes de guardar un nuevo evento, SyncPlans comprueba si la franja horaria se cruza con otro evento.
-              Si existe un choque:
+              Antes de confirmar un nuevo evento, SyncPlans compara la franja horaria con los eventos
+              existentes de los mismos participantes. Si hay choque:
             </p>
             <ul class="bullet-list">
-              <li>Muestra el evento ya existente.</li>
-              <li>Da opciones: mantener, reemplazar, revisar ambos.</li>
+              <li>Muestra qué evento ya estaba agendado.</li>
+              <li>Permite mantener el original, reemplazar o revisar ambos.</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- PRODUCTO / MODELO -->
-      <section>
+      <!-- MODELO -->
+      <section id="modelo">
         <div>
-          <div class="pill">Producto</div>
-          <h2 class="section-title">MVP enfocado en retención y valor inmediato.</h2>
+          <div class="section-pill">Producto & negocio</div>
+          <h2 class="section-title">MVP enfocado en retención y alivio inmediato.</h2>
           <p class="section-subtitle">
-            Primer objetivo: que parejas y familias sientan alivio real después de una semana de uso.
+            El objetivo del primer año es sencillo: que parejas y familias sientan menos fricción
+            en su día a día y no quieran volver atrás.
           </p>
           <div class="section-body">
             <ul class="bullet-list">
-              <li>Calendario mensual con codificación de color.</li>
-              <li>Creación rápida de eventos con tipo, hora, notas y participantes.</li>
-              <li>Modo individual, modo pareja y modo familia.</li>
-              <li>Historial de decisiones ante conflictos de horario (quién invitó primero, qué se priorizó).</li>
+              <li>Calendario mensual y semanal con codificación de color por tipo de evento.</li>
+              <li>Creación rápida de eventos (2–3 taps) con tipo, hora, notas y participantes.</li>
+              <li>Historial de decisiones sobre conflictos: qué se priorizó y cuándo.</li>
+              <li>Modo “resumen de la semana” para revisar compromisos clave.</li>
             </ul>
           </div>
         </div>
         <div>
-          <div class="pill">Modelo de negocio</div>
           <div class="card">
-            <div class="card-title">Freemium + Premium</div>
+            <div class="card-title">Modelo freemium</div>
             <ul class="bullet-list">
-              <li><strong>Free:</strong> calendario básico, eventos por tipo, notificaciones esenciales.</li>
-              <li><strong>Premium (USD 1.99/mes o 9.99/año):</strong> modo pareja/familia avanzado, historial completo, alertas inteligentes, integraciones externas.</li>
+              <li><span class="tag-inline">Free</span> calendario básico, eventos por tipo, notificaciones estándar.</li>
+              <li><span class="tag-inline">Premium · US$1.99/mes</span> grupos avanzados, historial completo, alertas inteligentes, exportación e integraciones.</li>
+              <li>Precio diseñado para ser una decisión de bajo riesgo pero alto impacto emocional.</li>
             </ul>
           </div>
           <div class="card">
-            <div class="card-title">Retención potencial</div>
+            <div class="card-title">Potencial de retención</div>
             <p>
-              Las herramientas que se integran al día a día de una pareja/familia tienden a tener retención anual
-              alta. La hipótesis es que el coste de cambiar de herramienta una vez acostumbrados es significativo,
-              lo que genera LTV atractivo.
+              Una vez que una pareja/familia integra SyncPlans en sus dinámicas de organización,
+              el coste emocional de cambiar de herramienta es alto.  
+              El espacio de “herramienta que reduce discusiones” es especialmente defensivo.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- ROADMAP / VISIÓN -->
-      <section>
+      <!-- ROADMAP -->
+      <section id="roadmap">
         <div>
-          <div class="pill">Hoja de ruta</div>
-          <h2 class="section-title">Roadmap de 12 meses: foco en producto y validación.</h2>
+          <div class="section-pill">Roadmap 12 meses</div>
+          <h2 class="section-title">De MVP funcional a estándar de organización compartida.</h2>
           <div class="section-body">
             <ul class="bullet-list">
-              <li><strong>Q1:</strong> MVP móvil (iOS/Android), beta privada con parejas y familias.</li>
-              <li><strong>Q2:</strong> Lanzamiento en LATAM, iteración de UX, integración con Google Calendar.</li>
-              <li><strong>Q3:</strong> Algoritmos de sugerencia de horarios y recordatorios inteligentes.</li>
-              <li><strong>Q4:</strong> Expansión a mercado hispano en EE.UU., versión web, funciones avanzadas familiares.</li>
+              <li><strong>Q1:</strong> MVP móvil (iOS/Android) con calendario, eventos y detección de conflictos. Beta cerrada con parejas/familias conocidas.</li>
+              <li><strong>Q2:</strong> Lanzamiento soft en LATAM. Integración con Google Calendar. Iteración fuerte de UX.</li>
+              <li><strong>Q3:</strong> Algoritmos de sugerencia de horarios y recordatorios inteligentes. Estadísticas de uso para los usuarios.</li>
+              <li><strong>Q4:</strong> Versión web, expansión a mercado hispano en EE.UU. y funcionalidades avanzadas de familia (rutinas, colegio, actividades extra).</li>
             </ul>
           </div>
         </div>
         <div>
-          <div class="pill">Visión</div>
           <div class="card">
-            <div class="card-title">Más allá del calendario</div>
+            <div class="card-title">Visión</div>
             <p>
-              SyncPlans quiere convertirse en la capa estándar de coordinación de vida compartida: viajes, metas,
-              finanzas de pareja, rutinas familiares. Un “hub” donde la logística deja de ser una fuente de conflicto
-              y se convierte en una ventaja de la relación.
+              Convertirnos en la capa estándar de coordinación de vida compartida: viajes, metas,
+              eventos clave, rutinas y, más adelante, finanzas y objetivos de pareja/familia.
+            </p>
+            <p style="margin-top:6px;">
+              SyncPlans quiere que la logística deje de ser motivo de conflicto y se convierta
+              en un área donde la relación “gana puntos”.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- EQUIPO / CTA FINAL -->
-      <section class="full" id="contacto">
+      <!-- EQUIPO -->
+      <section class="full" id="equipo">
         <div class="card">
-          <div class="pill">Equipo</div>
+          <div class="section-pill">Equipo</div>
           <h2 class="section-title">Fundador</h2>
           <p class="section-body">
-            <strong>Fernando Gainza</strong> – Experiencia en organización, logística y gestión de eventos complejos,
-            con una comprensión profunda de cómo las personas realmente usan el tiempo compartido. La idea de SyncPlans
-            nace de una necesidad personal y cotidiana: evitar conflictos por agendas cruzadas y darle más tranquilidad
-            a la vida en pareja y familia.
+            <strong>Fernando Gainza</strong> – experiencia en organización, logística y gestión de eventos complejos,
+            acostumbrado a coordinar intereses de múltiples actores (deportivos, institucionales y comerciales).
+            SyncPlans nace de una necesidad personal y real: evitar discusiones evitables por agendas cruzadas
+            y darle más tranquilidad a la vida en pareja y familia.
           </p>
-          <p class="section-body" style="margin-top:8px;">
-            La siguiente etapa incluye sumar a un equipo compacto: full stack developer, mobile engineer, diseñador
-            de producto y un perfil de growth orientado a TikTok/Instagram.
+          <p class="section-body" style="margin-top:6px;">
+            Los siguientes pasos incluyen conformar un equipo compacto con:
           </p>
+          <ul class="bullet-list">
+            <li>Full stack / mobile engineer.</li>
+            <li>Product designer con foco en consumer apps.</li>
+            <li>Perfil de growth orientado a TikTok/Instagram.</li>
+          </ul>
         </div>
       </section>
 
+      <!-- CTA FINAL -->
       <div class="final-cta">
-        <h2>Estamos buscando a los socios correctos para construir esto.</h2>
+        <h2>Buscamos a los socios correctos para escalar SyncPlans.</h2>
         <p>
-          Si te interesa invertir en una solución con potencial global para la organización de la vida compartida,
-          conversemos.
+          Si te interesa invertir en una solución con potencial global para resolver un problema humano
+          muy cotidiano, conversemos.
         </p>
         <div class="hero-ctas" style="justify-content:center;">
-          <button class="btn-primary">Agendar reunión con el fundador</button>
+          <button class="btn-primary">Agendar conversación</button>
           <button class="btn-secondary">Solicitar deck completo</button>
         </div>
       </div>
@@ -758,9 +880,9 @@
       <footer>
         <span>SyncPlans © 2025</span>
         <nav>
-          <a href="#">Términos</a>
-          <a href="#">Privacidad</a>
-          <a href="#">Contacto</a>
+          <a href="#problema">Problema</a>
+          <a href="#solucion">Solución</a>
+          <a href="#equipo">Equipo</a>
         </nav>
       </footer>
     </main>
