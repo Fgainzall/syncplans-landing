@@ -3,14 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>SyncPlans – Investor Landing</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="SyncPlans es la primera app que organiza la vida de personas, parejas y familias evitando conflictos de horarios."
+      content="SyncPlans: calendario por capas (Personal/Pareja/Familia) con detección automática de conflictos para evitar choques de agenda antes de que pasen."
     />
+
     <style>
       :root {
         --blue: #2563eb;
@@ -33,11 +31,7 @@
         --max-width: 1120px;
       }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
 
       body {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
@@ -47,15 +41,8 @@
         -webkit-font-smoothing: antialiased;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
 
       .page {
         min-height: 100vh;
@@ -70,7 +57,6 @@
       }
 
       /* NAVBAR */
-
       .navbar {
         display: flex;
         align-items: center;
@@ -108,37 +94,20 @@
         box-shadow: 0 10px 30px rgba(56, 189, 248, 0.35);
       }
 
-      .logo-text {
-        display: flex;
-        flex-direction: column;
-        gap: 0.1rem;
-      }
-
-      .logo-text span:first-child {
-        font-size: 0.95rem;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-      }
-
-      .logo-text span:last-child {
-        font-size: 0.72rem;
-        text-transform: uppercase;
-        color: var(--muted);
-        letter-spacing: 0.16em;
-      }
+      .logo-text { display: flex; flex-direction: column; gap: 0.1rem; }
+      .logo-text span:first-child { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em; }
+      .logo-text span:last-child { font-size: 0.72rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.16em; }
 
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
+        gap: 1.2rem;
         font-size: 0.86rem;
         color: var(--muted);
+        flex-wrap: wrap;
       }
 
-      .nav-links a {
-        position: relative;
-      }
-
+      .nav-links a { position: relative; }
       .nav-links a::after {
         content: "";
         position: absolute;
@@ -150,10 +119,7 @@
         background: linear-gradient(to right, #38bdf8, #22c55e);
         transition: width 0.18s ease-out;
       }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
+      .nav-links a:hover::after { width: 100%; }
 
       .nav-cta {
         padding: 0.5rem 1rem;
@@ -162,9 +128,10 @@
         border: 1px solid rgba(148, 163, 184, 0.35);
         color: #e5e7eb;
         font-size: 0.8rem;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: 0.4rem;
+        white-space: nowrap;
       }
 
       .nav-cta span.pill-dot {
@@ -175,8 +142,13 @@
         box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.18);
       }
 
-      /* HERO */
+      .nav-cta.secondary {
+        background: rgba(15, 23, 42, 0.75);
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        color: var(--muted);
+      }
 
+      /* HERO */
       .hero {
         padding: 2.25rem 0 3rem;
         display: grid;
@@ -198,17 +170,12 @@
         margin-bottom: 1rem;
       }
 
-      .hero-eyebrow span.badge-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: #22c55e;
-      }
+      .hero-eyebrow span.badge-dot { width: 7px; height: 7px; border-radius: 999px; background: #22c55e; }
 
       .hero-title {
-        font-size: clamp(2.1rem, 3vw, 2.6rem);
+        font-size: clamp(2.1rem, 3vw, 2.75rem);
         letter-spacing: -0.04em;
-        line-height: 1.1;
+        line-height: 1.08;
         margin-bottom: 0.9rem;
       }
 
@@ -219,18 +186,18 @@
       }
 
       .hero-subtitle {
-        font-size: 0.98rem;
+        font-size: 1rem;
         color: var(--muted);
-        line-height: 1.6;
-        max-width: 470px;
-        margin-bottom: 1.75rem;
+        line-height: 1.65;
+        max-width: 520px;
+        margin-bottom: 1.3rem;
       }
 
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
         gap: 0.8rem;
-        margin-bottom: 1.3rem;
+        margin-bottom: 1.2rem;
       }
 
       .btn {
@@ -245,6 +212,16 @@
         justify-content: center;
         gap: 0.5rem;
         white-space: nowrap;
+        transition: transform 0.1s ease;
+      }
+
+      .btn:active { transform: scale(0.98); }
+      .btn:focus-visible,
+      .nav-cta:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 2px solid rgba(56, 189, 248, 0.9);
+        outline-offset: 2px;
       }
 
       .btn-primary {
@@ -263,6 +240,7 @@
         font-size: 0.78rem;
         color: var(--muted);
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 0.4rem;
       }
@@ -273,12 +251,78 @@
         background: rgba(15, 23, 42, 0.9);
         border: 1px solid rgba(148, 163, 184, 0.35);
         font-size: 0.72rem;
+        color: #e5e7eb;
       }
 
-      .hero-right {
-        display: flex;
-        justify-content: center;
+      /* Waitlist card */
+      .waitlist-card {
+        margin-top: 1.1rem;
+        background: radial-gradient(circle at top left, rgba(56,189,248,0.08), rgba(34,197,94,0.04));
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        border-radius: var(--radius-lg);
+        padding: 0.9rem;
+        max-width: 560px;
       }
+
+      .waitlist-title { font-size: 0.92rem; margin-bottom: 0.25rem; }
+      .waitlist-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
+
+      .waitlist-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+      }
+      .waitlist-form .full { grid-column: 1 / -1; }
+
+      .field { display: grid; gap: 0.28rem; }
+      label { font-size: 0.74rem; color: #cbd5e1; }
+
+      input, select {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        background: rgba(2, 6, 23, 0.65);
+        color: #f9fafb;
+        padding: 0.62rem 0.7rem;
+        font-size: 0.86rem;
+      }
+      select option { color: #020617; }
+
+      .waitlist-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 0.7rem;
+        align-items: center;
+      }
+
+      .tiny-note { font-size: 0.72rem; color: var(--muted); }
+
+      .success-pill {
+        display: none;
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: #e5e7eb;
+        padding: 0.35rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(34, 197, 94, 0.6);
+        background: rgba(34, 197, 94, 0.12);
+        width: fit-content;
+      }
+
+      .error-pill {
+        display: none;
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: #e5e7eb;
+        padding: 0.35rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(249, 115, 22, 0.65);
+        background: rgba(249, 115, 22, 0.12);
+        width: fit-content;
+      }
+
+      .hero-right { display: flex; justify-content: center; }
 
       .hero-mockup {
         width: 100%;
@@ -340,11 +384,7 @@
         font-size: 0.68rem;
       }
 
-      .phone-title {
-        font-weight: 600;
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-      }
+      .phone-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
 
       .phone-events {
         display: flex;
@@ -361,26 +401,12 @@
         border-radius: 0.65rem;
         font-size: 0.78rem;
       }
+      .event-pill span.time { font-weight: 500; }
+      .event-pill span.label { font-size: 0.76rem; }
 
-      .event-pill span.time {
-        font-weight: 500;
-      }
-
-      .event-pill span.label {
-        font-size: 0.76rem;
-      }
-
-      .event-pill.personal {
-        background: #fef9c3;
-      }
-
-      .event-pill.pareja {
-        background: #fee2e2;
-      }
-
-      .event-pill.familia {
-        background: #dbeafe;
-      }
+      .event-pill.personal { background: #fef9c3; }
+      .event-pill.pareja { background: #fee2e2; }
+      .event-pill.familia { background: #dbeafe; }
 
       .conflict-banner {
         border-radius: 0.75rem;
@@ -392,18 +418,13 @@
         gap: 0.25rem;
         font-size: 0.74rem;
       }
-
-      .conflict-banner span.title {
-        font-weight: 600;
-        color: #b91c1c;
-      }
+      .conflict-banner span.title { font-weight: 700; color: #b91c1c; }
 
       .conflict-actions {
         display: flex;
         gap: 0.4rem;
         margin-top: 0.25rem;
       }
-
       .conflict-actions span {
         flex: 1;
         border-radius: 999px;
@@ -414,49 +435,16 @@
         color: #4b5563;
       }
 
-      /* SECTIONS GENERALES */
+      /* SECTIONS */
+      .section { padding: 1.5rem 0 2.2rem; }
+      .section-header { max-width: 720px; margin-bottom: 1.6rem; }
+      .section-kicker { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--muted); margin-bottom: 0.3rem; }
+      .section-title { font-size: 1.4rem; margin-bottom: 0.7rem; letter-spacing: -0.02em; }
+      .section-title span.gradient { background-image: linear-gradient(to right, #38bdf8, #22c55e); -webkit-background-clip: text; color: transparent; }
+      .section-subtitle { font-size: 0.92rem; color: var(--muted); line-height: 1.65; }
 
-      .section {
-        padding: 1.5rem 0 2.2rem;
-      }
-
-      .section-header {
-        max-width: 620px;
-        margin-bottom: 1.6rem;
-      }
-
-      .section-kicker {
-        font-size: 0.78rem;
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        color: var(--muted);
-        margin-bottom: 0.3rem;
-      }
-
-      .section-title {
-        font-size: 1.35rem;
-        margin-bottom: 0.7rem;
-      }
-
-      .section-title span.gradient {
-        background-image: linear-gradient(to right, #38bdf8, #22c55e);
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-
-      .section-subtitle {
-        font-size: 0.9rem;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
-      /* PROBLEMA / SOLUCIÓN */
-
-      .grid-3 {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1rem;
-      }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+      .grid-2 { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1.4rem; align-items: flex-start; }
 
       .card {
         background: radial-gradient(circle at top left, #0f172a, #020617);
@@ -464,25 +452,10 @@
         padding: 1rem;
         border: 1px solid rgba(148, 163, 184, 0.35);
       }
+      .card h3 { font-size: 0.98rem; margin-bottom: 0.4rem; }
+      .card p { font-size: 0.86rem; color: var(--muted); line-height: 1.65; }
 
-      .card h3 {
-        font-size: 0.98rem;
-        margin-bottom: 0.4rem;
-      }
-
-      .card p {
-        font-size: 0.85rem;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
-      .chip-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem;
-        margin-top: 0.6rem;
-      }
-
+      .chip-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
       .chip {
         font-size: 0.72rem;
         padding: 0.16rem 0.5rem;
@@ -492,25 +465,8 @@
         color: #e5e7eb;
       }
 
-      /* HOW IT WORKS */
-
-      .grid-2 {
-        display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-        gap: 1.4rem;
-        align-items: flex-start;
-      }
-
-      .steps {
-        display: grid;
-        gap: 0.7rem;
-      }
-
-      .step {
-        display: flex;
-        gap: 0.7rem;
-      }
-
+      .steps { display: grid; gap: 0.7rem; }
+      .step { display: flex; gap: 0.7rem; }
       .step-index {
         width: 22px;
         height: 22px;
@@ -522,105 +478,43 @@
         justify-content: center;
         font-size: 0.75rem;
         color: #bfdbfe;
+        flex: 0 0 auto;
+        margin-top: 2px;
       }
+      .step-body h3 { font-size: 0.92rem; margin-bottom: 0.15rem; }
+      .step-body p { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
 
-      .step-body h3 {
-        font-size: 0.9rem;
-        margin-bottom: 0.15rem;
-      }
-
-      .step-body p {
-        font-size: 0.82rem;
-        color: var(--muted);
-        line-height: 1.55;
-      }
-
-      .pill-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem;
-        margin-top: 0.6rem;
-      }
-
-      .pill-list span {
-        font-size: 0.72rem;
-        padding: 0.18rem 0.55rem;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        color: var(--muted);
-      }
-
-      /* MERCADO / MODELO */
-
-      .stats-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-top: 1.1rem;
-      }
-
+      .stats-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.1rem; }
       .stat {
-        flex: 1 1 150px;
+        flex: 1 1 170px;
         border-radius: var(--radius-lg);
         border: 1px solid rgba(148, 163, 184, 0.45);
         padding: 0.7rem 0.8rem;
         background: radial-gradient(circle at top left, #0b1120, #020617);
       }
+      .stat span.label { font-size: 0.75rem; color: var(--muted); display: block; }
+      .stat span.value { display: block; margin-top: 0.15rem; font-size: 1rem; font-weight: 650; }
 
-      .stat span.label {
-        font-size: 0.75rem;
-        color: var(--muted);
+      .pricing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 0.8rem; }
+      .pricing-card h3 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+      .pricing-price { font-size: 1.2rem; font-weight: 650; margin: 0.2rem 0 0.3rem; }
+      .pricing-tag { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem; line-height: 1.5; }
+      .pricing-card ul { list-style: none; padding-left: 0; font-size: 0.82rem; color: var(--muted); }
+      .pricing-card ul li { margin-bottom: 0.25rem; }
+
+      details {
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        background: radial-gradient(circle at top left, #0f172a, #020617);
+        padding: 0.85rem 0.9rem;
       }
+      details + details { margin-top: 0.65rem; }
+      summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; color: #e5e7eb; list-style: none; }
+      summary::-webkit-details-marker { display: none; }
+      details p { margin-top: 0.55rem; font-size: 0.86rem; color: var(--muted); line-height: 1.65; }
 
-      .stat span.value {
-        display: block;
-        margin-top: 0.15rem;
-        font-size: 1rem;
-        font-weight: 600;
-      }
-
-      .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-        margin-top: 0.8rem;
-      }
-
-      .pricing-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 0.2rem;
-      }
-
-      .pricing-price {
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin: 0.2rem 0 0.3rem;
-      }
-
-      .pricing-card ul {
-        list-style: none;
-        padding-left: 0;
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-
-      .pricing-card ul li {
-        margin-bottom: 0.25rem;
-      }
-
-      /* ROADMAP */
-
-      .timeline {
-        display: grid;
-        gap: 0.7rem;
-        margin-top: 0.9rem;
-      }
-
-      .timeline-item {
-        display: flex;
-        gap: 0.7rem;
-      }
-
+      .timeline { display: grid; gap: 0.7rem; margin-top: 0.9rem; }
+      .timeline-item { display: flex; gap: 0.7rem; }
       .timeline-pill {
         font-size: 0.75rem;
         padding: 0.15rem 0.6rem;
@@ -632,26 +526,11 @@
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
+        white-space: nowrap;
       }
-
-      .timeline-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: #38bdf8;
-      }
-
-      .timeline-body h3 {
-        font-size: 0.9rem;
-        margin-bottom: 0.15rem;
-      }
-
-      .timeline-body p {
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-
-      /* EQUIPO / CTA FINAL */
+      .timeline-dot { width: 7px; height: 7px; border-radius: 999px; background: #38bdf8; }
+      .timeline-body h3 { font-size: 0.92rem; margin-bottom: 0.15rem; }
+      .timeline-body p { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
 
       .team-card {
         display: grid;
@@ -660,7 +539,6 @@
         align-items: center;
         margin-top: 0.8rem;
       }
-
       .avatar {
         width: 54px;
         height: 54px;
@@ -673,37 +551,11 @@
         color: #020617;
         font-size: 1.1rem;
       }
-
-      .team-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 0.15rem;
-      }
-
-      .team-card p {
-        font-size: 0.82rem;
-        color: var(--muted);
-        margin-bottom: 0.3rem;
-      }
-
-      .team-meta {
-        font-size: 0.78rem;
-        color: #e5e7eb;
-      }
-
-      .team-meta span {
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        padding: 0.2rem 0.5rem;
-      }
-
-      .team-actions {
-        margin-top: 0.8rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-      }
-
-      /* FOOTER */
+      .team-card h3 { font-size: 0.98rem; margin-bottom: 0.15rem; }
+      .team-card p { font-size: 0.86rem; color: var(--muted); margin-bottom: 0.4rem; line-height: 1.6; }
+      .team-meta { font-size: 0.78rem; color: #e5e7eb; }
+      .team-meta span { border-radius: 999px; border: 1px solid rgba(148, 163, 184, 0.5); padding: 0.2rem 0.5rem; }
+      .team-actions { margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.6rem; }
 
       .footer {
         border-top: 1px solid rgba(31, 41, 55, 0.9);
@@ -716,55 +568,53 @@
         gap: 0.5rem;
         justify-content: space-between;
       }
+      .footer-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 
-      .footer-links {
+      /* Sticky CTA (mobile) */
+      .sticky-cta {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 20;
+        padding: 0.75rem 0.9rem;
+        background: rgba(2, 6, 23, 0.78);
+        backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(148, 163, 184, 0.25);
+      }
+      .sticky-cta .row {
+        max-width: var(--max-width);
+        margin: 0 auto;
         display: flex;
-        gap: 0.8rem;
-        flex-wrap: wrap;
+        gap: 0.6rem;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .sticky-cta .mini {
+        font-size: 0.78rem;
+        color: var(--muted);
       }
 
-      /* RESPONSIVE */
-
       @media (max-width: 900px) {
-        .hero {
-          grid-template-columns: minmax(0, 1fr);
-        }
-
-        .hero-right {
-          order: -1;
-        }
-
-        .grid-3 {
-          grid-template-columns: minmax(0, 1fr);
-        }
-
-        .grid-2 {
-          grid-template-columns: minmax(0, 1fr);
-        }
-
-        .pricing-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
+        .hero { grid-template-columns: minmax(0, 1fr); }
+        .hero-right { order: -1; }
+        .grid-3 { grid-template-columns: minmax(0, 1fr); }
+        .grid-2 { grid-template-columns: minmax(0, 1fr); }
+        .pricing-grid { grid-template-columns: minmax(0, 1fr); }
+        .waitlist-form { grid-template-columns: 1fr; }
       }
 
       @media (max-width: 640px) {
-        .navbar {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.6rem;
-        }
-
-        .nav-links {
-          gap: 0.9rem;
-          font-size: 0.8rem;
-        }
-
-        .hero {
-          padding-top: 1.4rem;
-        }
+        .navbar { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+        .nav-links { gap: 0.85rem; font-size: 0.8rem; }
+        .hero { padding-top: 1.4rem; }
+        .sticky-cta { display: block; }
+        .wrapper { padding-bottom: 6.5rem; } /* espacio para sticky */
       }
     </style>
   </head>
+
   <body>
     <div class="page">
       <div class="wrapper">
@@ -774,22 +624,32 @@
             <div class="logo-mark">S</div>
             <div class="logo-text">
               <span>SyncPlans</span>
-              <span>Life coordination app</span>
+              <span>Relationship-aware calendar</span>
             </div>
           </div>
-          <nav class="nav-links">
-            <a href="#problema">Problema</a>
-            <a href="#solucion">Producto</a>
-            <a href="#mercado">Mercado</a>
-            <a href="#modelo">Modelo</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#equipo">Equipo</a>
+
+          <nav class="nav-links" aria-label="Navegación principal">
+            <a href="#problema" data-track="nav_click" data-label="problema">Problema</a>
+            <a href="#solucion" data-track="nav_click" data-label="producto">Producto</a>
+            <a href="#mercado" data-track="nav_click" data-label="enfoque">Enfoque</a>
+            <a href="#modelo" data-track="nav_click" data-label="pricing">Pricing</a>
+            <a href="#roadmap" data-track="nav_click" data-label="roadmap">Roadmap</a>
+            <a href="#faq" data-track="nav_click" data-label="faq">FAQ</a>
+            <a href="#equipo" data-track="nav_click" data-label="equipo">Equipo</a>
+
+            <a href="#beta" class="nav-cta secondary" data-track="cta_click" data-label="nav_beta">
+              <span class="pill-dot" style="background:#38bdf8; box-shadow:0 0 0 5px rgba(56,189,248,0.18)"></span>
+              <span>Unirme a la beta</span>
+            </a>
+
             <a
-              href="mailto:fernandogainzallosa@gmail.com?subject=SyncPlans%20-%20Inversi%C3%B3n"
+              href="mailto:fernandogainzallosa@gmail.com?subject=SyncPlans%20-%20Inversi%C3%B3n%20/%20Alianza&body=Hola%20Fernando%2C%0A%0AQuiero%20conversar%20sobre%20SyncPlans.%0A%0A-%20Nombre%3A%0A-%20Rol%20(Inversor%2FMarca%2FPartner)%3A%0A-%20Pa%C3%ADs%2FCiudad%3A%0A-%20Contexto%20breve%3A%0A"
               class="nav-cta"
+              data-track="cta_click"
+              data-label="nav_investor_mail"
             >
               <span class="pill-dot"></span>
-              <span>Hablar con el fundador</span>
+              <span>Hablar (inversores)</span>
             </a>
           </nav>
         </header>
@@ -801,65 +661,136 @@
               <span class="badge-dot"></span>
               <span>Early-stage · Consumer SaaS · Parejas & familias</span>
             </div>
+
             <h1 class="hero-title">
-              El calendario que organiza
-              <span class="hero-highlight">relaciones, no solo horarios.</span>
+              Evita <span class="hero-highlight">choques de agenda</span> en pareja y familia,
+              <br />antes de que pasen.
             </h1>
+
             <p class="hero-subtitle">
-              SyncPlans ayuda a personas, parejas y familias a evitar choques de planes,
-              dobles compromisos y discusiones innecesarias. Todo en un calendario
-              compartido que detecta conflictos automáticamente.
+              SyncPlans es un calendario <strong>por capas</strong> (Personal/Pareja/Familia)
+              que <strong>detecta conflictos automáticamente</strong> y te ayuda a resolverlos en segundos,
+              sin discusiones ni planes duplicados.
             </p>
+
             <div class="hero-actions">
-              <a
-                href="mailto:fernandogainzallosa@gmail.com?subject=SyncPlans%20-%20Quiero%20conversar"
-                class="btn btn-primary"
-              >
-                Agendar llamada con el fundador
+              <a href="#beta" class="btn btn-primary" data-track="cta_click" data-label="hero_beta">
+                Pedir acceso a la beta
               </a>
-              <a href="#solucion" class="btn btn-secondary">
+              <a
+                href="mailto:fernandogainzallosa@gmail.com?subject=SyncPlans%20-%20Call%201%3A1%20(Inversi%C3%B3n)&body=Hola%20Fernando%2C%0A%0AQuiero%20agendar%20una%20llamada%20de%201%3A1%20sobre%20SyncPlans.%0A%0A-%20Nombre%3A%0A-%20Empresa%2FFondo%3A%0A-%20Ciudad%2FPa%C3%ADs%3A%0A-%20Disponibilidad%3A%0A"
+                class="btn btn-secondary"
+                data-track="cta_click"
+                data-label="hero_investor_mail"
+              >
+                Agendar llamada (inversores)
+              </a>
+              <a href="#solucion" class="btn btn-secondary" data-track="cta_click" data-label="hero_how">
                 Ver cómo funciona
               </a>
             </div>
+
             <div class="hero-footnote">
-              <span class="pill">MVP en diseño</span>
-              <span>Validando retención con parejas urbanas 20–40</span>
+              <span class="pill">Prototype clickable listo</span>
+              <span class="pill">MVP en construcción</span>
+              <span>Enfoque inicial: parejas urbanas 20–40 en LATAM</span>
+            </div>
+
+            <!-- Waitlist -->
+            <div class="waitlist-card" id="beta">
+              <div class="waitlist-title"><strong>Lista de espera (beta cerrada)</strong></div>
+              <div class="waitlist-sub">
+                Déjame tus datos y te escribo con acceso apenas abramos cupos.
+                <span class="tiny-note">No spam. 100% opt-in.</span>
+              </div>
+
+              <form class="waitlist-form" id="waitlistForm">
+                <div class="field">
+                  <label for="wlName">Nombre</label>
+                  <input id="wlName" name="name" type="text" placeholder="Tu nombre" required />
+                </div>
+
+                <div class="field">
+                  <label for="wlEmail">Email</label>
+                  <input id="wlEmail" name="email" type="email" placeholder="tu@email.com" required />
+                </div>
+
+                <div class="field">
+                  <label for="wlCity">Ciudad</label>
+                  <input id="wlCity" name="city" type="text" placeholder="Lima, Bogotá, CDMX..." />
+                </div>
+
+                <div class="field">
+                  <label for="wlUse">¿Cómo lo usarías?</label>
+                  <select id="wlUse" name="use">
+                    <option value="pareja">Pareja</option>
+                    <option value="familia">Familia</option>
+                    <option value="solo">Solo</option>
+                  </select>
+                </div>
+
+                <div class="field full">
+                  <label for="wlNote">Nota (opcional)</label>
+                  <input id="wlNote" name="note" type="text" placeholder="Qué problema quieres resolver (1 frase)" />
+                </div>
+
+                <div class="waitlist-actions full">
+                  <button type="submit" class="btn btn-primary" data-track="cta_click" data-label="waitlist_submit_btn">
+                    Enviar
+                  </button>
+
+                  <a
+                    id="waitlistMailto"
+                    class="btn btn-secondary"
+                    href="mailto:fernandogainzallosa@gmail.com?subject=SyncPlans%20-%20Beta%20Waitlist&body=Hola%20Fernando%2C%0A%0AQuiero%20unirme%20a%20la%20beta%20de%20SyncPlans.%0A%0A-%20Nombre%3A%0A-%20Email%3A%0A-%20Ciudad%3A%0A-%20Uso%20(Pareja%2FFamilia%2FSolo)%3A%0A-%20Nota%3A%0A"
+                    data-track="cta_click"
+                    data-label="waitlist_mailto"
+                  >
+                    Enviar por correo
+                  </a>
+
+                  <span class="tiny-note">Si aún no tienes backend, el botón de correo funciona perfecto.</span>
+                </div>
+
+                <div class="success-pill" id="wlSuccess">✅ Listo. Te agregué a la waitlist.</div>
+                <div class="error-pill" id="wlError">⚠️ No pude enviar al servidor. Igual quedó guardado localmente.</div>
+              </form>
             </div>
           </div>
 
           <div class="hero-right">
-            <div class="hero-mockup">
+            <div class="hero-mockup" aria-label="Mockup de conflicto de agenda">
               <div class="mockup-header">
-                <span class="mockup-badge">Vista rápida de un conflicto</span>
-                <span style="font-size: 0.7rem; color: #e5e7eb;">v0.1 · MVP</span>
+                <span class="mockup-badge">Ejemplo real de conflicto</span>
+                <span style="font-size: 0.7rem; color: #e5e7eb;">v0.1 · Prototype</span>
               </div>
               <div class="mockup-phone">
                 <div class="phone-screen">
                   <div class="phone-header">
-                    <span>jueves 15 de febrero</span>
-                    <span class="pill-role">Pareja & familia</span>
+                    <span>Jue, 15 Feb 2026</span>
+                    <span class="pill-role">Pareja</span>
                   </div>
                   <div class="phone-title">Hoy</div>
                   <div class="phone-events">
                     <div class="event-pill personal">
                       <span class="time">9:00</span>
-                      <span class="label">Dentista</span>
+                      <span class="label">Dentista (personal)</span>
                     </div>
                     <div class="event-pill pareja">
                       <span class="time">10:00 – 11:00</span>
-                      <span class="label">Compras con Lucía</span>
+                      <span class="label">Trámite (pareja)</span>
                     </div>
                     <div class="event-pill familia">
                       <span class="time">19:30</span>
-                      <span class="label">Cena en familia</span>
+                      <span class="label">Cena (familia)</span>
                     </div>
                   </div>
                   <div class="conflict-banner">
-                    <span class="title">Conflicto de eventos</span>
-                    <span>El nuevo plan se solapa con “Compras con Lucía”.</span>
+                    <span class="title">Conflicto detectado</span>
+                    <span>Tu nuevo plan se solapa con “Trámite (pareja)”.</span>
                     <div class="conflict-actions">
-                      <span>Conservar ambos</span>
-                      <span>Reemplazar</span>
+                      <span>Reprogramar</span>
+                      <span>Mantener</span>
                     </div>
                   </div>
                 </div>
@@ -873,53 +804,46 @@
           <div class="section-header">
             <div class="section-kicker">Problema</div>
             <h2 class="section-title">
-              La vida en pareja y familia está desbordada,<br />pero mal organizada.
+              Mucha vida compartida.<br />Demasiada coordinación improvisada.
             </h2>
             <p class="section-subtitle">
-              La vida en pareja y familia está más ocupada que nunca: trabajo, citas,
-              amigos, cumpleaños, actividades de los hijos… pero la organización sigue
-              repartida entre WhatsApp, calendarios genéricos y notas.
-              <br /><br />
-              El resultado: choques de horarios, confusiones y discusiones evitables.
+              Hoy la coordinación ocurre entre WhatsApp, calendarios genéricos y notas.
+              Eso crea fricción: cambios de último minuto, planes duplicados y discusiones evitables.
             </p>
+            <div class="chip-row" aria-label="Señales del problema">
+              <span class="chip">+3 canales para coordinar</span>
+              <span class="chip">Cambios de último minuto</span>
+              <span class="chip">Contexto perdido</span>
+              <span class="chip">Choques recurrentes</span>
+            </div>
           </div>
 
           <div class="grid-3">
             <div class="card">
               <h3>Choques de horario constantes</h3>
-              <p>
-                Dos personas aceptan planes distintos para la misma hora. Nadie recuerda
-                qué se confirmó primero. La fricción emocional es enorme.
-              </p>
+              <p>Dos personas confirman planes distintos para la misma hora. Se genera tensión y pérdida de confianza.</p>
             </div>
             <div class="card">
               <h3>Demasiados canales, cero claridad</h3>
-              <p>
-                WhatsApp, llamadas, calendarios y notas intentan resolver lo mismo. La
-                información está dispersa y se pierde contexto.
-              </p>
+              <p>WhatsApp, llamadas, calendarios y notas intentan resolver lo mismo. La información se dispersa.</p>
             </div>
             <div class="card">
-              <h3>Herramientas que no entienden relaciones</h3>
-              <p>
-                Google Calendar organiza reuniones, no dinámicas de pareja o familia. No
-                diferencia entre un compromiso emocional y uno administrativo.
-              </p>
+              <h3>Calendarios que no entienden relaciones</h3>
+              <p>Un calendario normal sirve para reuniones. No diferencia personal/pareja/familia ni resuelve conflictos.</p>
             </div>
           </div>
         </section>
 
-        <!-- SOLUCIÓN / PRODUCTO -->
+        <!-- PRODUCTO -->
         <section class="section" id="solucion">
           <div class="section-header">
-            <div class="section-kicker">Solución</div>
+            <div class="section-kicker">Producto</div>
             <h2 class="section-title">
-              SyncPlans: <span class="gradient">el calendario que entiende relaciones.</span>
+              SyncPlans: <span class="gradient">calendario por capas</span> con motor de conflictos.
             </h2>
             <p class="section-subtitle">
-              SyncPlans no es otro calendario: es la capa de organización diseñada para
-              personas que comparten vida. Clasifica eventos por tipo, sincroniza agendas
-              y evita conflictos antes de que ocurran.
+              Diseñado para gente que comparte vida: organiza por tipo de relación, sincroniza y detecta conflictos
+              <strong>antes</strong> de que se conviertan en problema.
             </p>
           </div>
 
@@ -928,110 +852,80 @@
               <div class="step">
                 <div class="step-index">1</div>
                 <div class="step-body">
-                  <h3>Onboarding simple</h3>
-                  <p>
-                    Regístrate y elige si usarás SyncPlans solo, con tu pareja o con tu
-                    familia. Crear o unirse a un grupo toma menos de 30 segundos.
-                  </p>
+                  <h3>Creas un evento (personal/pareja/familia)</h3>
+                  <p>Elegir la “capa” define quién lo ve y qué reglas aplica.</p>
                 </div>
               </div>
               <div class="step">
                 <div class="step-index">2</div>
                 <div class="step-body">
-                  <h3>Calendario por capas</h3>
-                  <p>
-                    Personal (amarillo), Pareja (rojo) y Familia (azul). Todo organizado
-                    visualmente para entender tu vida de un vistazo.
-                  </p>
+                  <h3>SyncPlans revisa agendas relevantes</h3>
+                  <p>Detecta solapes según el grupo: no todo conflicto es igual.</p>
                 </div>
               </div>
               <div class="step">
                 <div class="step-index">3</div>
                 <div class="step-body">
-                  <h3>Detección automática de conflictos</h3>
-                  <p>
-                    Cada vez que añades un evento, SyncPlans revisa la agenda compartida.
-                    Si hay cruce, te avisa inmediatamente.
-                  </p>
+                  <h3>Si hay conflicto: te lo muestra y propone acción</h3>
+                  <p>Reprograma, mantiene o compara. Menos fricción, más claridad.</p>
                 </div>
               </div>
               <div class="step">
                 <div class="step-index">4</div>
                 <div class="step-body">
-                  <h3>Resolver sin fricción</h3>
-                  <p>
-                    Compara eventos, conserva ambos, reemplaza o revisa detalles. Reducir
-                    discusiones nunca fue tan fácil.
-                  </p>
+                  <h3>Historial y decisiones (premium)</h3>
+                  <p>Registro de cambios para evitar la discusión repetida.</p>
                 </div>
               </div>
             </div>
 
             <div class="card">
-              <h3>MVP orientado a retención</h3>
+              <h3>Lo que valida el MVP</h3>
               <p>
-                El primer release se focaliza en validar algo muy concreto: que las
-                parejas y familias que prueban SyncPlans sienten menos fricción en su día
-                a día y no quieren volver al sistema anterior.
+                Foco en retención: que parejas/familias vuelvan porque sienten menos caos y más control semanal.
               </p>
               <div class="chip-row">
-                <span class="chip">Calendario mensual y semanal</span>
-                <span class="chip">Eventos por tipo</span>
-                <span class="chip">Motor de conflicto</span>
+                <span class="chip">Vista semanal/mensual</span>
+                <span class="chip">Capas por relación</span>
+                <span class="chip">Detección de solapes</span>
+                <span class="chip">Notificaciones</span>
+                <span class="chip">Grupos</span>
                 <span class="chip">Resumen semanal</span>
-                <span class="chip">Miembros del grupo</span>
-                <span class="chip">Notificaciones inteligentes</span>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- MERCADO -->
+        <!-- ENFOQUE -->
         <section class="section" id="mercado">
           <div class="section-header">
-            <div class="section-kicker">Mercado</div>
+            <div class="section-kicker">Enfoque inicial</div>
             <h2 class="section-title">
-              Un problema cotidiano en un mercado
-              <span class="gradient">masivo y subatendido.</span>
+              Empezamos donde duele más:<br /><span class="gradient">parejas urbanas 20–40 en LATAM.</span>
             </h2>
             <p class="section-subtitle">
-              Hay miles de millones de usuarios que coordinan sus vidas desde el
-              smartphone, pero ninguna app diseñada para la realidad emocional de una
-              pareja o una familia. SyncPlans apunta a convertirse en el estándar global
-              de coordinación compartida.
+              Segmento con alta actividad social/laboral y coordinación constante. Dominamos un caso de uso claro
+              y luego expandimos a familias, grupos e integraciones.
             </p>
           </div>
 
           <div class="stats-row">
-            <div class="stat">
-              <span class="label">TAM · Usuarios de smartphone (2025)</span>
-              <span class="value">5.78B+</span>
-            </div>
-            <div class="stat">
-              <span class="label">SAM · Adultos 18–50 con vida activa</span>
-              <span class="value">2.5–3.1B</span>
-            </div>
-            <div class="stat">
-              <span class="label">SOM inicial · Parejas urbanas 20–40</span>
-              <span class="value">25–40M</span>
-            </div>
-            <div class="stat">
-              <span class="label">Penetración móvil en ciudades clave</span>
-              <span class="value">80–90%</span>
-            </div>
+            <div class="stat"><span class="label">Usuario target</span><span class="value">Parejas urbanas (20–40)</span></div>
+            <div class="stat"><span class="label">Dolor principal</span><span class="value">Choques + cambios de último minuto</span></div>
+            <div class="stat"><span class="label">Métrica de tracción</span><span class="value">Eventos/semana + D7/D30</span></div>
+            <div class="stat"><span class="label">Expansión</span><span class="value">Familia + integraciones</span></div>
           </div>
         </section>
 
-        <!-- MODELO DE NEGOCIO -->
+        <!-- PRICING -->
         <section class="section" id="modelo">
           <div class="section-header">
-            <div class="section-kicker">Modelo de negocio</div>
+            <div class="section-kicker">Pricing</div>
             <h2 class="section-title">
-              Freemium simple, pensado para volumen<br />y decisiones sin fricción.
+              Freemium simple, diseñado para adopción<br />y upgrades naturales.
             </h2>
             <p class="section-subtitle">
-              Precio diseñado para decisiones sin fricción: menos de US$20/año por
-              reducir conflictos diarios en parejas y familias.
+              Menos de US$20/año para reducir fricción semanal. Free para probar; Premium para coordinación seria.
             </p>
           </div>
 
@@ -1039,22 +933,25 @@
             <div class="card pricing-card">
               <h3>Plan Free</h3>
               <p class="pricing-price">$0</p>
+              <p class="pricing-tag">Ideal para probar capas y coordinación básica.</p>
               <ul>
-                <li>Calendario personal básico</li>
-                <li>Clasificación por tipo de evento</li>
+                <li>Calendario + 1 grupo básico</li>
+                <li>Capas por tipo de evento</li>
                 <li>Notificaciones estándar</li>
-                <li>Un grupo básico (pareja o familia)</li>
+                <li><strong>Sin historial</strong> de decisiones</li>
               </ul>
             </div>
+
             <div class="card pricing-card">
               <h3>Plan Premium</h3>
               <p class="pricing-price">$2.99 / mes · $19.99 / año</p>
+              <p class="pricing-tag">Para parejas/familias que coordinan semanalmente.</p>
               <ul>
-                <li>Gestión completa de conflictos de agenda</li>
+                <li>Gestión completa de conflictos</li>
                 <li>Historial de cambios y decisiones</li>
                 <li>Grupos avanzados con más miembros</li>
                 <li>Resumen semanal y mensual</li>
-                <li>Integración con calendarios externos (futuro)</li>
+                <li>Integración Google/Apple Calendar (roadmap)</li>
               </ul>
             </div>
           </div>
@@ -1063,76 +960,91 @@
         <!-- ROADMAP -->
         <section class="section" id="roadmap">
           <div class="section-header">
-            <div class="section-kicker">Roadmap 12–24 meses</div>
+            <div class="section-kicker">Roadmap</div>
             <h2 class="section-title">
-              De MVP validado a estándar de coordinación<br /><span class="gradient"
-                >en pareja y familia.</span
-              >
+              De prototype a producto escalable<br /><span class="gradient">en 12–24 meses.</span>
             </h2>
+            <p class="section-subtitle">
+              Coherente con el estado actual: prototype listo, MVP en construcción, beta cerrada para validar retención.
+            </p>
           </div>
 
           <div class="timeline">
             <div class="timeline-item">
               <div>
-                <div class="timeline-pill">
-                  <span class="timeline-dot"></span>
-                  <span>Fase 1 · MVP & Beta</span>
-                </div>
+                <div class="timeline-pill"><span class="timeline-dot"></span><span>Fase 1 · Beta cerrada</span></div>
               </div>
               <div class="timeline-body">
                 <h3>0–6 meses</h3>
-                <p>
-                  MVP móvil funcionando. Validación con parejas reales. Iteraciones en
-                  UX de conflicto. Métricas clave: D7, D30, eventos/semana por usuario.
-                </p>
+                <p>MVP + beta cerrada. Iteraciones en UX de conflictos. Métricas: D7/D30, eventos/semana, % conflictos resueltos.</p>
               </div>
             </div>
             <div class="timeline-item">
               <div>
-                <div class="timeline-pill">
-                  <span class="timeline-dot"></span>
-                  <span>Fase 2 · Go-to-Market LATAM</span>
-                </div>
+                <div class="timeline-pill"><span class="timeline-dot"></span><span>Fase 2 · Go-to-market</span></div>
               </div>
               <div class="timeline-body">
                 <h3>6–12 meses</h3>
-                <p>
-                  Lanzamiento en LATAM. Crecimiento orgánico y paid. Colaboraciones con
-                  creadores de contenido de pareja & familia. Product-led growth.
-                </p>
+                <p>Lanzamiento por cohorts en LATAM. Product-led growth. Colaboraciones con creadores (pareja/familia).</p>
               </div>
             </div>
             <div class="timeline-item">
               <div>
-                <div class="timeline-pill">
-                  <span class="timeline-dot"></span>
-                  <span>Fase 3 · Escala & Integraciones</span>
-                </div>
+                <div class="timeline-pill"><span class="timeline-dot"></span><span>Fase 3 · Integraciones</span></div>
               </div>
               <div class="timeline-body">
                 <h3>12–24 meses</h3>
-                <p>
-                  Integración Google/Apple Calendar. Versión web. Resúmenes emocionales
-                  (año en pareja), rutinas familiares y expansión al mercado hispano en
-                  EE.UU.
-                </p>
+                <p>Integración Google/Apple Calendar. Versión web. Reglas avanzadas por grupo y expansión al mercado hispano en EE.UU.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- EQUIPO / CTA FINAL -->
+        <!-- FAQ -->
+        <section class="section" id="faq">
+          <div class="section-header">
+            <div class="section-kicker">FAQ</div>
+            <h2 class="section-title">
+              Respuestas rápidas para generar<br /><span class="gradient">confianza.</span>
+            </h2>
+            <p class="section-subtitle">
+              En coordinación de vida compartida, privacidad y control importan.
+            </p>
+          </div>
+
+          <details>
+            <summary>¿Mi pareja/familia ve todo lo que tengo?</summary>
+            <p>No. La idea es control por capas y permisos: lo personal puede ser personal, lo compartido se ve según el grupo.</p>
+          </details>
+
+          <details>
+            <summary>¿Se integra con Google/Apple Calendar?</summary>
+            <p>Está en roadmap. La prioridad actual es retención + motor de conflictos. Se integra cuando el loop esté estable.</p>
+          </details>
+
+          <details>
+            <summary>¿Qué pasa si dos personas cambian un evento?</summary>
+            <p>En Premium se incluye historial de cambios y decisiones para claridad total.</p>
+          </details>
+
+          <details>
+            <summary>¿SyncPlans reemplaza WhatsApp?</summary>
+            <p>No. WhatsApp es conversación. SyncPlans es coordinación: acuerdos claros y visibles, con conflicto detectado.</p>
+          </details>
+
+          <details>
+            <summary>Privacidad: ¿venden mis datos?</summary>
+            <p>No. El modelo es suscripción, no publicidad. Objetivo: privacidad por defecto y control por grupo.</p>
+          </details>
+        </section>
+
+        <!-- EQUIPO -->
         <section class="section" id="equipo">
           <div class="section-header">
             <div class="section-kicker">Equipo</div>
-            <h2 class="section-title">
-              Fundado desde la experiencia real<br />de organizar vidas complejas.
-            </h2>
+            <h2 class="section-title">Fundado desde la experiencia real<br />de coordinar vidas complejas.</h2>
             <p class="section-subtitle">
-              SyncPlans nace de una necesidad real: reducir fricciones innecesarias en
-              la vida compartida. El proyecto combina experiencia en coordinación de
-              proyectos complejos, gestión de stakeholders y amor por los productos
-              digitales bien diseñados.
+              SyncPlans nace de una necesidad real: bajar fricción en la vida compartida. Obsesión por producto y claridad operativa.
             </p>
           </div>
 
@@ -1142,26 +1054,25 @@
               <div>
                 <h3>Fernando Gainza Llosa</h3>
                 <p>
-                  Fundador de SyncPlans. Experiencia coordinando proyectos complejos,
-                  marcas, instituciones y operaciones en eventos deportivos, además de
-                  una vida muy real en pareja y familia que inspiró este producto.
+                  Fundador de SyncPlans. Experiencia coordinando proyectos complejos y construyendo un producto que haga la coordinación diaria más simple.
                 </p>
                 <div class="team-meta">
-                  <span>Buscando socios para validar y escalar SyncPlans.</span>
+                  <span>Buscando early adopters y partners para validar y escalar.</span>
                 </div>
               </div>
             </div>
 
             <div class="team-actions">
+              <a href="#beta" class="btn btn-primary" data-track="cta_click" data-label="bottom_beta">Pedir acceso a la beta</a>
               <a
-                href="mailto:fernandogainzallosa@gmail.com?subject=SyncPlans%20-%20Quiero%20conversar"
-                class="btn btn-primary"
+                href="mailto:fernandogainzallosa@gmail.com?subject=SyncPlans%20-%20Reuni%C3%B3n%201%3A1&body=Hola%20Fernando%2C%0A%0AQuiero%20agendar%20una%20reuni%C3%B3n%201%3A1%20sobre%20SyncPlans.%0A%0A-%20Nombre%3A%0A-%20Rol%3A%0A-%20Ciudad%2FPa%C3%ADs%3A%0A-%20Contexto%20breve%3A%0A"
+                class="btn btn-secondary"
+                data-track="cta_click"
+                data-label="bottom_investor_mail"
               >
                 Agendar reunión 1:1
               </a>
-              <a href="#top" class="btn btn-secondary">
-                Volver arriba
-              </a>
+              <a href="#top" class="btn btn-secondary" data-track="cta_click" data-label="back_top">Volver arriba</a>
             </div>
           </div>
         </section>
@@ -1170,10 +1081,184 @@
         <footer class="footer">
           <span>© 2025 SyncPlans. Todos los derechos reservados.</span>
           <div class="footer-links">
-            <span>Draft para uso interno e investor deck.</span>
+            <span>Draft para validación y conversaciones con inversionistas.</span>
           </div>
         </footer>
       </div>
     </div>
+
+    <!-- Sticky CTA (mobile) -->
+    <div class="sticky-cta" aria-label="Acción rápida">
+      <div class="row">
+        <div class="mini">¿Quieres beta? Cupos limitados.</div>
+        <a href="#beta" class="btn btn-primary" style="padding:0.6rem 1rem" data-track="cta_click" data-label="sticky_beta">
+          Unirme
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // =========
+      // Tracking + UTM capture (sin librerías)
+      // Guarda eventos en localStorage y (opcional) intenta enviar a /api/track
+      // =========
+      (function () {
+        const STORAGE_EVENTS = "syncplans_events";
+        const STORAGE_UTM = "syncplans_utm";
+        const sessionId = (crypto?.randomUUID?.() || ("sess_" + Math.random().toString(16).slice(2)));
+
+        function getUTM() {
+          const params = new URLSearchParams(window.location.search);
+          const keys = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
+          const utm = {};
+          let has = false;
+          keys.forEach(k => {
+            const v = params.get(k);
+            if (v) { utm[k] = v; has = true; }
+          });
+
+          // si no viene en URL, intenta recuperar el último guardado
+          if (!has) {
+            try {
+              const saved = JSON.parse(localStorage.getItem(STORAGE_UTM) || "{}");
+              return saved && Object.keys(saved).length ? saved : {};
+            } catch { return {}; }
+          }
+
+          // guarda el nuevo utm
+          try { localStorage.setItem(STORAGE_UTM, JSON.stringify(utm)); } catch {}
+          return utm;
+        }
+
+        const utm = getUTM();
+
+        function enqueueEvent(name, data) {
+          const payload = {
+            name,
+            data: data || {},
+            ts: new Date().toISOString(),
+            path: location.pathname,
+            href: location.href,
+            referrer: document.referrer || "",
+            ua: navigator.userAgent || "",
+            sessionId,
+            utm
+          };
+
+          try {
+            const existing = JSON.parse(localStorage.getItem(STORAGE_EVENTS) || "[]");
+            existing.push(payload);
+            localStorage.setItem(STORAGE_EVENTS, JSON.stringify(existing));
+          } catch {}
+
+          // intento best-effort (si luego creas /api/track)
+          fetch("/api/track", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+            keepalive: true
+          }).catch(() => {});
+        }
+
+        // evento view
+        enqueueEvent("view", {});
+
+        // track clicks con data-track
+        document.addEventListener("click", function (e) {
+          const el = e.target.closest("[data-track]");
+          if (!el) return;
+          enqueueEvent(el.getAttribute("data-track"), {
+            label: el.getAttribute("data-label") || "",
+            text: (el.textContent || "").trim().slice(0, 80)
+          });
+        });
+
+        // expone para waitlist
+        window.__syncplansTrack = enqueueEvent;
+        window.__syncplansUTM = utm;
+      })();
+
+      // =========
+      // Waitlist: POST opcional a /api/waitlist + fallback local/mailto
+      // =========
+      (function () {
+        const form = document.getElementById("waitlistForm");
+        const success = document.getElementById("wlSuccess");
+        const error = document.getElementById("wlError");
+        const mailto = document.getElementById("waitlistMailto");
+
+        function buildMailto(payload) {
+          const subject = "SyncPlans - Beta Waitlist";
+          const bodyLines = [
+            "Hola Fernando,",
+            "",
+            "Quiero unirme a la beta de SyncPlans.",
+            "",
+            `- Nombre: ${payload.name || ""}`,
+            `- Email: ${payload.email || ""}`,
+            `- Ciudad: ${payload.city || ""}`,
+            `- Uso (Pareja/Familia/Solo): ${payload.use || ""}`,
+            `- Nota: ${payload.note || ""}`,
+            "",
+            `- UTM: ${JSON.stringify(window.__syncplansUTM || {})}`,
+          ];
+          const body = encodeURIComponent(bodyLines.join("\n"));
+          return `mailto:fernandogainzallosa@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+        }
+
+        function show(el) { if (el) el.style.display = "inline-flex"; }
+        function hide(el) { if (el) el.style.display = "none"; }
+
+        if (!form) return;
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          hide(success); hide(error);
+
+          const payload = {
+            name: document.getElementById("wlName").value.trim(),
+            email: document.getElementById("wlEmail").value.trim(),
+            city: document.getElementById("wlCity").value.trim(),
+            use: document.getElementById("wlUse").value,
+            note: document.getElementById("wlNote").value.trim(),
+            utm: window.__syncplansUTM || {},
+            ts: new Date().toISOString()
+          };
+
+          // local backup
+          try {
+            const existing = JSON.parse(localStorage.getItem("syncplans_waitlist") || "[]");
+            existing.push(payload);
+            localStorage.setItem("syncplans_waitlist", JSON.stringify(existing));
+          } catch {}
+
+          // mailto always updated with real data
+          if (mailto) mailto.href = buildMailto(payload);
+
+          // track submit
+          window.__syncplansTrack && window.__syncplansTrack("waitlist_submit", { use: payload.use });
+
+          // try server (optional)
+          try {
+            const res = await fetch("/api/waitlist", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+
+            if (!res.ok) throw new Error("server_not_ok");
+
+            show(success);
+            form.reset();
+          } catch (err) {
+            // server not available => fallback UI
+            show(error);
+            // track failure
+            window.__syncplansTrack && window.__syncplansTrack("waitlist_submit_failed", { reason: String(err) });
+            form.reset();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
